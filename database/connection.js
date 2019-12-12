@@ -8,7 +8,14 @@ db.connect(`${config.host}/${config.db_name}`, {
   if (err)
       console.error(err);
   else
-      console.log('Connected to the database');
+      console.log('Connected to the database...');
 });
 
-module.exports = db;
+const closeConnection = () => db.connection.close(() => {
+  console.log('Disconnected with database...')
+});
+
+module.exports = {
+  db,
+  closeConnection,
+};

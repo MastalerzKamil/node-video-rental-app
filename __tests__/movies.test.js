@@ -1,6 +1,7 @@
 const request = require('supertest');
 const { stop, server } = require('../bin/www');
 
+afterAll((done) => stop().then(done));
 describe('/movies', () => {
   describe('POST /', () => {
     it('should return code 200', async () => {
@@ -16,8 +17,5 @@ describe('/movies', () => {
         .set('Accept', 'application/json')
       expect(response.status).toEqual(200);
     });
-  });
-  afterEach(() => {
-    stop();
   });
 });
