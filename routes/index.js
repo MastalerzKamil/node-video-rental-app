@@ -1,9 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const version = require('../version');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-module.exports = router;
+module.exports = (app) => {
+  app.get('/version', (_, res) => res.status(200).json({ version }));
+}
