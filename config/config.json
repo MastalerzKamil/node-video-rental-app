@@ -1,0 +1,14 @@
+{
+  "development": {
+    "host": "mongodb://127.0.0.1",
+    "db_name": "video_app_dev"
+  },
+  "stage": {
+    "host": "mongodb://db",
+    "db_name": "video_app_stage"
+  },
+  "production": {
+    "host": "mongodb://localhost",
+    "db_name": "video_app__prod"
+  }
+}
