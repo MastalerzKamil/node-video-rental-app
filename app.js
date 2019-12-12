@@ -19,5 +19,6 @@ app.use(cookieParser());
 
 require('./routes')(app);
 require('./middleware')(app);
+require('./database').connection;
 
 module.exports = app;

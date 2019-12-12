@@ -1,0 +1,14 @@
+{
+  "development": {
+    "host": "mongodb://localhost",
+    "db_name": "video_app_dev"
+  },
+  "stage": {
+    "host": "mongodb://db:27017",
+    "db_name": "video_app_stage"
+  },
+  "production": {
+    "host": "mongodb://localhost:27017",
+    "db_name": "video_app__prod"
+  }
+}
