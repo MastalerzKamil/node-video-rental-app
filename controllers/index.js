@@ -6,4 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-module.exports = router;
+const movies = require('./movies');
+
+module.exports = {
+  movies
+};
