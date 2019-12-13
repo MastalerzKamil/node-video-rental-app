@@ -2,7 +2,6 @@ const moviesQueries = require('../database/queries').movies;
 const { validationResult } = require('express-validator/check');
 
 async function addMovie(req, res) {
-  const { title, type, year, plot } = req.body;
   try {
     const errors = validationResult(req);
 
@@ -11,7 +10,9 @@ async function addMovie(req, res) {
       return;
     }
 
-    res.status(200).send({result: 'Success'});
+    moviesQueries.addMovie(req.body)
+      .then(() => res.status(200).send({result: 'Success'}))
+      .catch(err => res.status(400).send(err));
   } catch (err) {
     res.status(400).send(err.message);
   }
