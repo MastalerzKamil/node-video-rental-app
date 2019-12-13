@@ -5,6 +5,13 @@ const singleMovie = {
   plot: 'full'
 };
 
+const invalidMovie = {
+  type: 'xyz',
+  year: 2000,
+  plot: 'full'
+}
+
 module.exports = {
-  singleMovie
+  singleMovie,
+  invalidMovie
 }
