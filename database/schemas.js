@@ -7,12 +7,10 @@ const movieSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    required: true,
     enum: ['movie', 'series', 'episode']
   },
   year: {
-    type: Number,
-    required: true,
+    type: String,
   },
   plot: {
     type: String,

@@ -6,12 +6,10 @@ const validate = (method) => {
     case 'addMovie': {
      return [
         body('title', `title doesn't exists`).exists(),
-        body('type', `type doesn't exists or invalid format`)
-          .exists()
+        body('type', `type invalid format`)
           .isIn(['movie', 'series', 'episode']),
         body('year', `year doesn't exists`).exists().isInt(),
-        body('plot', `plot doesn't exists or invalid format`)
-          .exists()
+        body('plot', `plot invalid format`)
           .isIn(['short', 'full']),
        ]
     }
