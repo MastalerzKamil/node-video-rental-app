@@ -5,13 +5,10 @@ You can checkout API on https://pipeline-vid-master-o3ynxnsf9a.herokuapp.com/ver
 # Routes
 
 `GET /version` - getting API version
-`POST /movies` - adding movie to database
+`POST /movies` - adding movie to database from OMDAPI by title
 ```javascript
 {
   "title": "<your movie title> (required)",
-  "type": "'movie', 'series' or 'episode' (required)",
-  "year": "<year as string> (required)",
-  "plot": "'short' or 'full' (required)"
 }
 ```
 `GET /movies` - getting all movies in database
