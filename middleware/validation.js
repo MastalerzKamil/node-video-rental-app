@@ -7,9 +7,11 @@ const validate = (method) => {
      return [
         body('title', `title doesn't exists`).exists(),
         body('type', `type invalid format`)
+          .optional()
           .isIn(['movie', 'series', 'episode']),
-        body('year', `year doesn't exists`).exists().isInt(),
+        body('year', `year doesn't exists`).optional().isInt(),
         body('plot', `plot invalid format`)
+          .optional()
           .isIn(['short', 'full']),
        ]
     }

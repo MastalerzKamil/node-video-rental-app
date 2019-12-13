@@ -2,6 +2,7 @@ const moviesQueries = require('../database/queries').movies;
 const { validationResult } = require('express-validator/check');
 
 async function addMovie(req, res) {
+  const { movie } = res.locals;
   try {
     const errors = validationResult(req);
 
