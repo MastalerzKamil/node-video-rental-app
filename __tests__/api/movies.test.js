@@ -13,5 +13,14 @@ describe('/movies', () => {
         .set('Accept', 'application/json')
       expect(response.status).toEqual(200);
     });
+
+    it('should show all body validation errors', async () => {
+      const givenBody = {};
+      const response = await request(server)
+        .post('/movies')
+        .send(givenBody)
+        .set('Accept', 'application/json')
+      expect(response.body.errors.length !== 0).toBe(true);
+    })
   });
 });
