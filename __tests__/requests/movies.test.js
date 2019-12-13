@@ -21,6 +21,13 @@ describe('/movies', () => {
         .send(givenBody)
         .set('Accept', 'application/json')
       expect(response.body.errors.length !== 0).toBe(true);
-    })
+    });
+
+    it('should fetch all movies from database', async () => {
+      const response = await request(server)
+        .get('/movies');
+
+      expect(response.body.length !== 0).toBe(true);
+    });
   });
 });

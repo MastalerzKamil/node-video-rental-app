@@ -9,6 +9,11 @@ async function addMovie(movieData) {
   }
 }
 
+async function getAllMovies() {
+  return await Movie.find();
+}
+
 module.exports = {
-  addMovie
+  addMovie,
+  getAllMovies
 }

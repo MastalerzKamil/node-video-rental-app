@@ -18,6 +18,16 @@ async function addMovie(req, res) {
   }
 }
 
+async function getAllMovies(req, res) {
+  moviesQueries.getAllMovies()
+    .then((result) => res.status(200).send(result))
+    .catch(err => res.status(404).send({
+      error: err,
+      msg: 'Problem with fetching movies'
+    }));
+}
+
 module.exports = {
-  add: addMovie
+  add: addMovie,
+  get: getAllMovies
 }
