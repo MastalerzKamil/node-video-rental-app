@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const { connect, closeConnection } = require('../../database').connection
-const { Movie } = require('../../database').models;
 const { singleMovie, invalidMovie } = require('../mock').movies;
 const { addMovie } = require('../../database/queries').movies;
 

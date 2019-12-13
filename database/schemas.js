@@ -17,7 +17,7 @@ const movieSchema = new mongoose.Schema({
   plot: {
     type: String,
     enum: ['short', 'full']
-}
+  }
 });
 
 module.exports = {
