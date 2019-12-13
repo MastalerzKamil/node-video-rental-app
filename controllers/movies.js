@@ -12,7 +12,7 @@ async function addMovie(req, res) {
     }
 
     moviesQueries.addMovie(movie)
-      .then(() => res.status(200).send({result: 'Success'}))
+      .then(() => res.status(200).send({result: 'Success', movie}))
       .catch(err => res.status(400).send(err));
   } catch (err) {
     res.status(400).send(err.message);
