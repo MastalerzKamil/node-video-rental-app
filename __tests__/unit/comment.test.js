@@ -14,7 +14,7 @@ describe('collection comment', () => {
   it.skip('should add comment to collection', async () => {
     const givenComment = comment;
     const movieForComment = await getMovieByTitle('Avatar');
-    // givenComment.movie = movieForComment._id;
+    givenComment.movie = movieForComment._id;
     console.log(givenComment);
 
     addComment(givenComment)

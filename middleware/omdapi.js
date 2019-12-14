@@ -4,13 +4,18 @@ const axios = require('axios');
 function getMovieByTitle(req, res, next) {
   const { title } = req.body;
 
-  axios(`http://www.omdbapi.com/?apikey=${config.omdapi_key}&t="${title}"`)
-  .then(({ data }) => {
-    res.locals.movie = data;
-    next();
-  });
+  fetchMovieByTitle(title)
+    .then(({ data }) => {
+      res.locals.movie = data;
+      next();
+    });
+}
+
+async function fetchMovieByTitle(title) {
+  return axios(`http://www.omdbapi.com/?apikey=${config.omdapi_key}&t="${title}"`);
 }
 
 module.exports = {
-  getMovieByTitle
+  getMovieByTitle,
+  fetchMovieByTitle
 };

@@ -1,5 +1,8 @@
 const { Movie } = require('../models');
 
+/**
+ * @param  {...} movieData Object which contains data from omdapi
+ */
 async function addMovie(movieData) {
   try {
     const movieObject = new Movie(movieData);
@@ -10,7 +13,7 @@ async function addMovie(movieData) {
 }
 
 async function getAllMovies() {
-  return await Movie.find();
+  return Movie.find();
 }
 
 async function getMovieByTitle(movieTitle) {
