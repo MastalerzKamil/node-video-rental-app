@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const movieSchema = new mongoose.Schema({
   Title: String,
   Year: String,
-
   Type: {
     type: String,
     enum: ['movie', 'series', 'episode']
@@ -20,9 +19,7 @@ const movieSchema = new mongoose.Schema({
   Country: String,
   Awards: String,
   Poster: String,
-  Ratings: [
-    { Source: String, Value: String}
-  ],
+  Ratings: [{ Source: String, Value: String}],
   Metascore: String,
   imdbRating: String,
   imdbVotes: String,
@@ -34,6 +31,22 @@ const movieSchema = new mongoose.Schema({
   Response: String
 });
 
+const commentSchema = new mongoose.Schema({
+  movie: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'movies'
+  },
+  text: {
+    type: String,
+    required: true
+  },
+  rate: {
+    type: mongoose.Schema.Types.Decimal128,
+    required: true
+  }
+})
+
 module.exports = {
-  movieSchema
+  movieSchema,
+  commentSchema
 }

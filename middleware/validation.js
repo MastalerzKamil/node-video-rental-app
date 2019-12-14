@@ -13,7 +13,16 @@ const validate = (method) => {
         body('plot', `plot invalid format`)
           .optional()
           .isIn(['short', 'full']),
-       ]
+      ]
+    }
+    case 'addComment': {
+      return [
+        body('movieId', `movie id doesn't exists`).isInt().exists(),
+        body('text', `text doesn't exists`).exists(),
+        body('rate', `Rate invalid format or diesn't exists`)
+          .isFloat()
+          .exists()
+      ]
     }
   }
 };
