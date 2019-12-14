@@ -1,14 +1,17 @@
 {
   "development": {
     "host": "mongodb://127.0.0.1",
-    "db_name": "video_app_dev"
+    "db_name": "video_app_dev",
+    "omdapi_key": "eeb1ee96"
   },
   "stage": {
     "host": "mongodb://db",
-    "db_name": "video_app_stage"
+    "db_name": "video_app_stage",
+    "omdapi_key": "eeb1ee96"
   },
   "production": {
     "host": "mongodb://localhost",
-    "db_name": "video_app__prod"
+    "db_name": "video_app__prod",
+    "omdapi_key": "eeb1ee96"
   }
 }

@@ -1,29 +1,40 @@
 const mongoose = require('mongoose');
-const { connect, closeConnection } = require('../../database').connection
-const { Movie } = require('../../database').models;
-const { singleMovie, invalidMovie } = require('../mock').movies;
-const { addMovie } = require('../../database/queries').movies;
+const { connect, closeConnection, addMovie } = require('../../database').connection
+const { singleMovie, invalidMovie, saveMovie } = require('../mock').movies;
+const {
+  getMovieByTitle
+} = require('../../database/queries').movies;
+const config = require('../../config');
+const axios = require('axios');
 
-beforeAll(async () => await connect());
+const testedMovieTitle = '2012'
+
+jest.mock('axios');
+
+// Make sure to resolve with a promise
+axios.mockResolvedValue();
+
+beforeAll(async () => {
+  await connect();
+});
 afterAll(async () => await closeConnection());
 
 describe('collection movies', () => {
   it('should add new movie into collection', async () => {
     const givenMovie = singleMovie;
-    addMovie(givenMovie)
-      .then((res) => {
-        expect(res.title).toEqual(singleMovie.title);
-        done();
-      });
+    const addedMovie = await saveMovie(givenMovie);
+    expect(addedMovie.Title).toEqual(singleMovie.Title);
   });
 
-  it('should valid correct schema for movie', async () => {
-    const givenMovie = singleMovie;
-    await expect(addMovie.bind(null,givenMovie)).not.toThrow();
-  });
-
-  it('should throw error because invalid type', async () => {
+  it.skip('should throw error because invalid type', async () => {
     const givenMovie = invalidMovie;
-    await expect(addMovie(givenMovie)).rejects.toThrow();
+    await expect(saveMovie(givenMovie)).rejects.toThrow();
+  });
+
+  it.skip('should find movie by title', async () => {
+    await saveMovie(testedMovieTitle);
+    const givenMovie = await getMovieByTitle(testedMovieTitle)
+    expect(givenMovie !== null).toBe(true);
+    done();
   });
 });

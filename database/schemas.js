@@ -1,25 +1,53 @@
 const mongoose = require('mongoose');
 
 const movieSchema = new mongoose.Schema({
-  title: {
+  Title: String,
+  Year: String,
+  Type: {
+    type: String,
+    enum: ['movie', 'series', 'episode']
+  },
+  Rated: String,
+  Released: String,
+  Runtime: String,
+  Genre: String,
+  Director: String,
+  Writer: String,
+  Actors: String,
+  Plot: String,
+  Language: String,
+  Country: String,
+  Awards: String,
+  Poster: String,
+  Ratings: [{ Source: String, Value: String}],
+  Metascore: String,
+  imdbRating: String,
+  imdbVotes: String,
+  imdbID: String,
+  DVD: String,
+  BoxOffice: String,
+  Production: String,
+  Website: String,
+  Response: String
+});
+
+const commentSchema = new mongoose.Schema({
+  movie: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Movies',
+    required: true,
+  },
+  text: {
     type: String,
     required: true
   },
-  type: {
-    type: String,
-    required: true,
-    enum: ['movie', 'series', 'episode']
-  },
-  year: {
-    type: Number,
-    required: true,
-  },
-  plot: {
-    type: String,
-    enum: ['short', 'full']
-}
-});
+  rate: {
+    type: mongoose.Schema.Types.Decimal128,
+    required: true
+  }
+})
 
 module.exports = {
-  movieSchema
+  movieSchema,
+  commentSchema
 }
