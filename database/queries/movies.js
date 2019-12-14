@@ -1,9 +1,9 @@
 const { Movie } = require('../models');
 
 async function addMovie(movieData) {
-  const movieObject = new Movie(movieData);
   try {
-    await movieObject.save();
+    const movieObject = new Movie(movieData);
+    return movieObject.save();
   } catch (err) {
     throw new Error(err.message);
   }
@@ -14,16 +14,11 @@ async function getAllMovies() {
 }
 
 async function getMovieByTitle(movieTitle) {
-  console.log(movieTitle)
-  return await Movie.findOne({'Title': movieTitle}, function(err, doc) {
-    if (err){
-        // error
-        throw err;
-    } else if (doc) {
-        // film exists
-        console.log("Found movie with id "+doc._id);
-    }
-  });
+  try {
+    return Movie.findOne({'Title': movieTitle})
+} catch (error) {
+    throw new Error(error.message)
+}
 }
 
 module.exports = {

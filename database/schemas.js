@@ -32,10 +32,12 @@ const movieSchema = new mongoose.Schema({
 });
 
 const commentSchema = new mongoose.Schema({
+  /*
   movie: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'movies'
   },
+  */
   text: {
     type: String,
     required: true

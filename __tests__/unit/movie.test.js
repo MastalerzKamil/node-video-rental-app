@@ -1,9 +1,14 @@
 const mongoose = require('mongoose');
 const { connect, closeConnection } = require('../../database').connection
 const { singleMovie, invalidMovie } = require('../mock').movies;
-const { addMovie } = require('../../database/queries').movies;
+const { addMovie, getMovieByTitle } = require('../../database/queries').movies;
 
-beforeAll(async () => await connect());
+const testedMovieTitle = '2012'
+
+beforeAll(async () => {
+  await connect();
+  await addMovie({title: testedMovieTitle});
+});
 afterAll(async () => await closeConnection());
 
 describe('collection movies', () => {
@@ -24,5 +29,11 @@ describe('collection movies', () => {
   it.skip('should throw error because invalid type', async () => {
     const givenMovie = invalidMovie;
     await expect(addMovie.bind(null,givenMovie)).rejects.toThrow();
+  });
+
+  it('should find movie by title', async () => {
+    const givenMovie = await getMovieByTitle(testedMovieTitle)
+    expect(givenMovie !== null).toBe(true);
+    done();
   });
 });
