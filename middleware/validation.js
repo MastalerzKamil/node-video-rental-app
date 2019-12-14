@@ -17,7 +17,7 @@ const validate = (method) => {
     }
     case 'addComment': {
       return [
-        body('movieId', `movie id doesn't exists`).isInt().exists(),
+        body('movie', `movie id doesn't exists`).exists(),
         body('text', `text doesn't exists`).exists(),
         body('rate', `Rate invalid format or diesn't exists`)
           .isFloat()

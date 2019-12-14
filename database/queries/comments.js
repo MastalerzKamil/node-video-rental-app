@@ -1,9 +1,14 @@
 const { Comment } = require('../models');
-
+/**
+ * @param  {movie, text, rate} commentData
+ * movie - reference to movies collection
+ * text - comment text
+ * rate - rate for movie
+ */
 async function addComment(commentData) {
   try {
     const commentObject = new Comment(commentData);
-    await commentObject.save();
+    return commentObject.save();
   } catch (err) {
     throw new Error(err.message)
   }
