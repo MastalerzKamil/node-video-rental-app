@@ -2,27 +2,27 @@ version: "2"
 services:
   app:
     container_name: app
-    restart: always
     build: .
     ports:
       - "3000:3000"
     links:
       - db
-    depends_on: :
+    depends_on:
       - db
     networks:
       - webappnetwork
-  db:
-    image: mongo
     volumes:
-      - ./data:/data/db
+      - app:/app
+      - app:/app/node_modules
+  db:
+    container_name: db
+    image: mongo
     ports:
       - "27017:27017"
     networks:
       - webappnetwork
-  networks:
-    webappnetwork:
-      driver: bridge
-  volumes:
-    db:
-    app:
+networks:
+  webappnetwork:
+    driver: bridge
+volumes:
+  app:
