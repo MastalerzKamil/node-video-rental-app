@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
 const { connect, closeConnection } = require('../../database').connection
 const { comment } = require('../mock').comment;
-const { addComment } = require('../../database/queries').comments;
+const { singleMovie } = require('../mock').movies;
+const {
+  addComment,
+  getAllComments,
+  getCommentsForMovie
+} = require('../../database/queries').comments;
 
 beforeAll(async () => {
   await connect();
@@ -18,5 +23,18 @@ describe('collection comment', () => {
       });
   });
 
+  it('should get all comments', async () => {
+    getAllComments()
+      .then(res => {
+        expect(res.length > 0).toBe(true);
+        done();
+      });
+  });
 
-})
+  it('should get comments for movie', async () => {
+    getCommentsForMovie(singleMovie._id)
+      .then(res => {
+        expect(res.length !== 0).toBe(true);
+      })
+  })
+});

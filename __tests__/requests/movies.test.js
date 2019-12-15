@@ -9,7 +9,6 @@ describe('/movies', () => {
       const response = await request(server)
         .post('/movies')
         .set('Accept', 'application/json')
-        console.log(response.body)
       expect(response.message !== 0).toBe(true);
     });
 
