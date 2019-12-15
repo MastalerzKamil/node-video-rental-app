@@ -18,7 +18,8 @@ You can checkout API on https://pipeline-vid-master-o3ynxnsf9a.herokuapp.com/ver
 
 ## Dockerized
 
-
+* Use `docker-compose up` to run app and everything should works after building
+* Use `docker-compose down` to close app on docker or just `docker-compose down -v --rmi all --remove-orphans` to close and remove everytving connected with app
 
 # Routes
 
