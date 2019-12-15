@@ -1,8 +1,8 @@
 const request = require('supertest');
 const { stop, server } = require('../../bin/www');
-const { singleMovie } = require('../mock').movies;
 
 afterAll((done) => stop().then(done));
+
 describe('/movies', () => {
   describe('POST /', () => {
     it('should show all body validation errors', async () => {
@@ -13,13 +13,15 @@ describe('/movies', () => {
       expect(response.message !== 0).toBe(true);
     });
 
-    it('should return code 200', async () => {
-      const body = singleMovie;
+    it('should return code 200 or 409 if exists', async () => {
+      const body = {title: 'Kevin'};
       const response = await request(server)
         .post('/movies')
         .send(body)
         .set('Accept', 'application/json')
-      expect(response.status).toEqual(200);
+      expect(
+        response.status === 200 || response.status === 409
+        ).toBe(true);
     });
 
     it('should fetch all movies from database', async () => {
