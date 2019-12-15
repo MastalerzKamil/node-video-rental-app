@@ -14,5 +14,7 @@ module.exports = (app) => {
     moviesController.add
   );
   app.get('/movies', moviesController.get);
-  app.post('/comments', validation('addComment'), commentsController.add)
+  app.post('/comments', validation('addComment'), commentsController.add);
+  app.get('/comments', commentsController.get.all);
+  app.get('/comments/:movieId', commentsController.get.byId)
 }

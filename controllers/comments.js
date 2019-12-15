@@ -18,6 +18,30 @@ async function addComment(req, res) {
   }
 }
 
+async function getAllComments(req, res) {
+  commentsQueries.getAllComments()
+    .then((result) => res.status(200).send(result))
+    .catch(err => res.status(404).send({
+      error: err,
+      msg: 'Problem with getting comments'
+    }));
+}
+
+async function getCommentsByMovieId(req, res) {
+  const { movieId } = req.params;
+  console.log(req.params.movieId)
+  commentsQueries.getCommentsForMovie(movieId)
+    .then((result) => res.status(200).send(result))
+    .catch(err => res.status(404).send({
+      error: err,
+      msg: 'Problem with getting comments for movie'
+    }));
+}
+
 module.exports = {
-  add: addComment
+  add: addComment,
+  get: {
+    all: getAllComments,
+    byId: getCommentsByMovieId
+  }
 }
