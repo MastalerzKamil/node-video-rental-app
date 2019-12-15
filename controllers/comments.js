@@ -29,7 +29,6 @@ async function getAllComments(req, res) {
 
 async function getCommentsByMovieId(req, res) {
   const { movieId } = req.params;
-  console.log(req.params.movieId)
   commentsQueries.getCommentsForMovie(movieId)
     .then((result) => res.status(200).send(result))
     .catch(err => res.status(404).send({
