@@ -34,8 +34,7 @@ const movieSchema = new mongoose.Schema({
 const commentSchema = new mongoose.Schema({
   movie: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Movies',
-    required: true,
+    ref: mongoose.model('movies', movieSchema)
   },
   text: {
     type: String,

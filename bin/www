@@ -88,6 +88,7 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   console.info('Listening on ' + bind);
+  console.info(`Enviroment: ${process.env.NODE_ENV}`)
   debug('Listening on ' + bind);
 }
 
