@@ -19,13 +19,22 @@ async function getAllMovies() {
 async function getMovieByTitle(movieTitle) {
   try {
     return Movie.findOne({'Title': movieTitle})
-} catch (error) {
+  } catch (error) {
     throw new Error(error.message)
+  }
 }
+
+async function getMovieById(movieId) {
+  try {
+    return Movie.findById(movieId)
+  } catch (err) {
+    throw new Error(err.message)
+  }
 }
 
 module.exports = {
   addMovie,
   getAllMovies,
   getMovieByTitle,
+  getMovieById
 }

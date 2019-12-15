@@ -24,11 +24,24 @@ async function getAllMovies(req, res) {
     .then((result) => res.status(200).send(result))
     .catch(err => res.status(404).send({
       error: err,
-      msg: 'Problem with fetching movies'
+      msg: 'Problem with getting movies'
+    }));
+}
+
+async function getMovieById(req,res) {
+  const { movieId } = req.params;
+  moviesQueries.getMovieById(movieId)
+    .then((result) => res.status(200).send(result))
+    .catch(err => res.status(404).send({
+      error: err,
+      msg: 'Problem with getting movie by id'
     }));
 }
 
 module.exports = {
   add: addMovie,
-  get: getAllMovies
+  get: {
+    all: getAllMovies,
+    byId: getMovieById,
+  }
 }

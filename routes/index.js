@@ -13,7 +13,8 @@ module.exports = (app) => {
     databaseMiddleware.checkExistingMovie,
     moviesController.add
   );
-  app.get('/movies', moviesController.get);
+  app.get('/movies', moviesController.get.all);
+  app.get('/movies/:movieId', moviesController.get.byId)
   app.post('/comments', validation('addComment'), commentsController.add);
   app.get('/comments', commentsController.get.all);
   app.get('/comments/:movieId', commentsController.get.byId)
