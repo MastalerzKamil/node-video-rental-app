@@ -26,7 +26,7 @@ describe('collection comment', () => {
   it('should get all comments', async () => {
     getAllComments()
       .then(res => {
-        expect(res.length > 0).toBe(true);
+        expect(res.body.length > 0).toBe(true);
         done();
       });
   });
@@ -34,7 +34,7 @@ describe('collection comment', () => {
   it('should get comments for movie', async () => {
     getCommentsForMovie(singleMovie._id)
       .then(res => {
-        expect(res.length !== 0).toBe(true);
+        expect(res.body.length !== 0).toBe(true);
       })
   })
 });
