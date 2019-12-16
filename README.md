@@ -1,6 +1,8 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 # About
-You can checkout API on https://pipeline-vid-master-o3ynxnsf9a.herokuapp.com/version
+You can checkout API containers deploy at https://guarded-gorge-62799.herokuapp.com/version
+
+WARNING! From some reasons connection with MongoDB container dosen't works so it should be repaired but I had no time to do that
 
 # Requirements
 
