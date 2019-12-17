@@ -1,8 +1,8 @@
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-# About
-You can checkout API containers deploy at https://guarded-gorge-62799.herokuapp.com/version
 
-WARNING! From some reasons connection with MongoDB container dosen't works so it should be repaired but I had no time to do that
+# About
+You can checkout API containers deploy at http://46.101.119.25:3000/movies (URL to find all actual movie)
+
+Deployed on DigitalOcean droplet as dockerized app. (Manual configuration)
 
 # Requirements
 
@@ -22,6 +22,10 @@ WARNING! From some reasons connection with MongoDB container dosen't works so it
 
 * Use `docker-compose up` to run app and everything should works after building
 * Use `docker-compose down` to close app on docker or just `docker-compose down -v --rmi all --remove-orphans` to close and remove everytving connected with app
+
+## Deployed
+
+Use url http://46.101.119.25:3000 to get or post something fro my API
 
 # Routes
 
